@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @event.name %>
+</p>
+
+<p>
+  <strong>Author:</strong>
+  <%= @event.user.try(:name) %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @event.description %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @event.date %>
+</p>
+
+<p>
+  <strong>Active:</strong>
+  <%= @event.active %>
+</p>
+<% if current_user %>
+    <% if @registered %>
+        <button type="button" class="btn btn-default btn-lg" disabled="disabled">Already Registered</button>
+      <%= link_to 'Remove Registration', unregister_event_path(@event), class: 'btn btn-default btn-sm btn-warning' %>
+    <% else %>
+      <%= link_to 'Register', register_event_path(@event), class: 'btn btn-default btn-lg' %>
+    <% end %>
+<% end %>
+<% if current_user && current_user.id == @event.user_id %>
+  <%= link_to 'Edit', edit_event_path(@event), class: 'btn btn-default' %> |
+<% end %>
+<%= link_to 'Back', events_path %>

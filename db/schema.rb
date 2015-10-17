@@ -11,10 +11,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151017165941) do
+ActiveRecord::Schema.define(version: 20151017174232) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "events", force: :cascade do |t|
+    t.string   "name",                       null: false
+    t.integer  "user_id",                    null: false
+    t.text     "description"
+    t.datetime "date"
+    t.boolean  "active",      default: true, null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "events", ["user_id"], name: "index_events_on_user_id", using: :btree
+
+  create_table "user_events", force: :cascade do |t|
+    t.integer  "user_id",    null: false
+    t.integer  "event_id",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "user_events", ["event_id"], name: "index_user_events_on_event_id", using: :btree
+  add_index "user_events", ["user_id"], name: "index_user_events_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -31,6 +53,7 @@ ActiveRecord::Schema.define(version: 20151017165941) do
     t.datetime "updated_at",                          null: false
     t.string   "name"
     t.integer  "role"
+    t.string   "linkedin"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
