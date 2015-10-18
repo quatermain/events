@@ -4,7 +4,8 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = Event.all
+    @events = Event.where(active: true)
+    @my_events = current_user.events if current_user
   end
 
   # GET /events/1

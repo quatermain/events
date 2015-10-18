@@ -13,3 +13,31 @@
  *= require_tree .
  *= require_self
  */
+@import 'font-awesome';
+html{
+  background-image: image-url('background.png');
+  background-size: cover;
+  min-height: 600px;
+}
+body, main{
+  background: none;
+}
+#index{
+  margin-top: 80px;
+  color: #fff;
+  h4{
+    font-weight: 300;
+    margin-top: 30px;
+  }
+  h3{
+    font-weight: 300;
+    margin-top: 0;
+    padding-top: 0;
+  }
+  h1{
+    margin-top: 70px;
+    font-size: 130px;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+}

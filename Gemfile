@@ -36,3 +36,4 @@ group :production do
   gem 'rails_12factor'
   gem 'unicorn'
 end
+gem 'font-awesome-rails'
