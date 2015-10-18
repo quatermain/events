@@ -3,6 +3,8 @@
     <%= simple_form_for @user, url: user_update_path do |f| %>
         <%= f.input :name %>
         <%= f.input :linkedin %>
+        <%= f.input :skill_list, input_html: {value: @user.skill_list.to_s} %>
+        <%= f.input :interest_list, input_html: {value: @user.interest_list.to_s} %>
         <%= f.button :submit %>
     <% end %>
   </div>

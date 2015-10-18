@@ -14,4 +14,6 @@ class User < ActiveRecord::Base
   has_many :events
   has_many :user_events
   has_many :registered_events, through: :user_events, class_name: 'User'
+
+  acts_as_taggable_on :skills, :interests
 end

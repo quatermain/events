@@ -3,7 +3,9 @@ class UsersController < ApplicationController
   before_filter :load_user
 
   def show
-
+    if params[:id]
+      @user = User.where(id: params[:id]).first
+    end
   end
 
   def edit
@@ -28,6 +30,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:name, :linkedin)
+    params.require(:user).permit(:name, :linkedin, :skill_list, :interest_list)
   end
 end

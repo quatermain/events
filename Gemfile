@@ -37,3 +37,4 @@ group :production do
   gem 'unicorn'
 end
 gem 'font-awesome-rails'
+gem 'acts-as-taggable-on', '~> 3.4'
